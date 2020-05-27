@@ -12,9 +12,12 @@ namespace MLTest.DataStructures
     {
         [LoadColumn(6)]
         public bool Label { get; set; }
-        [LoadColumn(new int[] { 2, 4 })]
-        [VectorType(2)]
-        public float[] LumiStdHueMean { get; set; }
+
+        [LoadColumn(2)]
+        public float LumiStd { get; set; }
+
+        [LoadColumn(4)]
+        public float HueMean { get; set; }
     }
 
     public class DiamondPrediction

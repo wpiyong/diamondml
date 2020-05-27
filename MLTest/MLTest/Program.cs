@@ -114,7 +114,8 @@ namespace MLTest
             IDataView testData = trainTestSplit.TestSet;
 
             // STEP 2: Common data process configuration with pipeline data transformations          
-            var dataProcessPipeline = mlContext.Transforms.CopyColumns(outputColumnName: "Features", inputColumnName: nameof(DiamondData.LumiStdHueMean));
+            //var dataProcessPipeline = mlContext.Transforms.CopyColumns(outputColumnName: "Features", inputColumnName: nameof(DiamondData.LumiStdHueMean));
+            var dataProcessPipeline = mlContext.Transforms.Concatenate("Features", "LumiStd", "HueMean");
 
             // STEP 3: Set the training algorithm, then create and config the modelBuilder                            
             var trainer = mlContext.BinaryClassification.Trainers.SdcaLogisticRegression(labelColumnName: "Label", featureColumnName: "Features");
@@ -135,7 +136,7 @@ namespace MLTest
             Console.WriteLine("The model is saved to {0}", ModelPath);
 
             // TRY IT: Make a single test prediction, loading the model from .ZIP file
-            DiamondData sampleDiamond = new DiamondData { LumiStdHueMean = new float[] { 0.1169f, 0.13599f} };
+            DiamondData sampleDiamond = new DiamondData { LumiStd = 0.1169f, HueMean =0.13599f };
 
             // Create prediction engine related to the loaded trained model
             var predEngine = mlContext.Model.CreatePredictionEngine<DiamondData, DiamondPrediction>(trainedModel);
@@ -144,7 +145,7 @@ namespace MLTest
             var resultprediction = predEngine.Predict(sampleDiamond);
 
             Console.WriteLine($"=============== Single Prediction  ===============");
-            Console.WriteLine($"Text: {sampleDiamond.LumiStdHueMean} | Prediction: {(Convert.ToBoolean(resultprediction.Prediction) ? "white diamond" : "Non white diamond")} Probability of being white diamond: {resultprediction.Probability} ");
+            Console.WriteLine($"{sampleDiamond.LumiStd}, {sampleDiamond.HueMean} | Prediction: {(Convert.ToBoolean(resultprediction.Prediction) ? "white diamond" : "Non white diamond")} Probability of being white diamond: {resultprediction.Probability} ");
             Console.WriteLine($"================End of Process.Hit any key to exit==================================");
             
         }
