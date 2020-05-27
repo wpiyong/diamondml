@@ -1,0 +1,7 @@
+C:\machinelearning\Test\MLTest\CSVDataPrepare\bin\Debug\CSVDataPrepare.exe.config
+C:\machinelearning\Test\MLTest\CSVDataPrepare\bin\Debug\CSVDataPrepare.exe
+C:\machinelearning\Test\MLTest\CSVDataPrepare\bin\Debug\CSVDataPrepare.pdb
+C:\machinelearning\Test\MLTest\CSVDataPrepare\obj\Debug\CSVDataPrepare.csprojAssemblyReference.cache
+C:\machinelearning\Test\MLTest\CSVDataPrepare\obj\Debug\CSVDataPrepare.csproj.CoreCompileInputs.cache
+C:\machinelearning\Test\MLTest\CSVDataPrepare\obj\Debug\CSVDataPrepare.exe
+C:\machinelearning\Test\MLTest\CSVDataPrepare\obj\Debug\CSVDataPrepare.pdb
